@@ -13,11 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($result) > 0) {
         // User found, start session
         $_SESSION["username"] = $username;
-        echo "<script>alert('Login Successful'); window.location.href = 'dashboard.php';</script>";
-    } else {
-        // Invalid login
-        echo "<script>alert('Invalid Username or Password'); window.location.href = 'login.php';</script>";
+        header("Location: dashboard.php"); // Redirect without alert
+        exit();
+    } 
+
+    session_start();
+    if (isset($_GET['error'])) {
+        echo "<p style='color: red;'>" . htmlspecialchars($_GET['error']) . "</p>";
     }
+
+    header("Location: login.php" . urlencode($error_message));
+    exit();
+    
+        
 }
 ?>
 
