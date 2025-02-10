@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+html, body {
+    height: 100%;
+}
+body {
+    background-image: linear-gradient(to right, rgb(238, 194, 74), rgb(66, 40, 95));
+}
+.container {    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 4px;
+    padding: 70px;
+    width: 450px;
+    transform: translate(-50%, -50%);
+    background: rgb(245, 244, 244);
+}
+.container1 {
+    scrollbar-width: thin; /* Makes the scrollbar thin */
+    scrollbar-color: #a8a6a69a rgb(245, 244, 244); /* Thumb color and track color */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 90%; /* Make it responsive */
+    max-width: 450px; /* Maintain a max width */
+    min-height: 400px; /* Set a minimum height */
+    max-height: 550px; /* Adjusted maximum height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-radius: 4px; /* Match the design */
+    padding: 30px; /* Adjust internal padding */
+    transform: translate(-50%, -50%);
+    background: rgb(245, 244, 244); /* Same background as container */
+}
+h2 {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+h3 {
+    font-size: 2rem;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form-wrapper form {
+    margin: 25px 0 65px;
+}
+form .form-control {
+    height: 50px;
+    position: relative;
+    margin-bottom: 16px;
+}
+.form-control input {
+    height: 80%;
+    width: 100%;
+    background: hsl(0, 0%, 100%);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: #000000;
+    font-size: 1rem;
+    padding: 0 10px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5); 
+}
+.form-control input:is(:focus, :valid) {
+    background: #fffdfd;
+    padding: 16px 20px 0;
+}
+.form-control label {
+    position: absolute;
+    left: 20px;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    pointer-events: none;
+    color: #8c8c8c;
+    transition: all 0.1s ease;
+}
+.form-control input:is(:focus, :valid)~label {
+    font-size: 0.75rem;
+    transform: translateY(-130%);
+}
+form button {
+    width: 25%;
+    padding: 8px 0;
+    font-size: 1rem;
+    background: #3bc2f7;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    margin: 25px 10;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+form button:hover {
+    background: hsl(214, 73%, 54%);
+}
+a {
+    color: rgb(0, 0, 0);
+    margin-left: 160px;
+}
+.navbar {
+    position: fixed; /* Use fixed positioning to keep it at the top */
+    top: 20px; /* Distance from the top edge */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to center */
+    display: flex; /* Flexbox for alignment */
+    gap: 10px; /* Space between logos */
+}
+
+.logo {
+    width: 50px; /* Adjust the size of the logos */
+    height: 50px; /* Keep aspect ratio */
+}
+.lgn {
+    margin-left: 230px;
+}
