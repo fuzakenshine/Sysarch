@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($result) > 0) {
         // User found, start session
         $_SESSION["username"] = $username;
+        $_SESSION['profile_pic'] = !empty($row['PROFILE_PIC']) ? $row['PROFILE_PIC'] : 'default.png'; 
         header("Location: dashboard.php"); // Redirect without alert
         exit();
     } 

@@ -16,9 +16,10 @@
             //var_dump($username, $password, !is_numeric($username));
             
             if (!empty($username) && !empty($password) && !is_numeric($username)) {
-                $query = "INSERT INTO register (`IDNO`, `LASTNAME`, `FIRSTNAME`, `MIDNAME`, `COURSE`, `YEARLEVEL`, `USERNAME`, `PASSWORD`) VALUES 
-                ('$idno', '$lastname', '$firstname', '$midname', '$course', '$yearLevel', '$username', '$password')";
-        
+                $query = "INSERT INTO register 
+                (`IDNO`, `LASTNAME`, `FIRSTNAME`, `MIDNAME`, `COURSE`, `YEARLEVEL`, `USERNAME`, `PASSWORD`, `PROFILE_PIC`) 
+                VALUES 
+                ('$idno', '$lastname', '$firstname', '$midname', '$course', '$yearLevel', '$username', '$password', 'default.jpg')";
             if (mysqli_query($con, $query)) {
                 echo "<script type='text/javascript'> alert('Successfully Registered'); window.location.href = 'login.php'; 
               </script>";}
@@ -82,5 +83,6 @@
             <button type="submit">Register</button>
             <a class="lgn" href="login.php">Login</a>
         </form>
+        </div>
 </body>
 </html>
