@@ -19,6 +19,7 @@ $profile_pic = !empty($user['PROFILE_PIC']) ? $user['PROFILE_PIC'] : "default.jp
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Dashboard</title>
     <style>
         /* Reset some styles */
@@ -30,7 +31,7 @@ $profile_pic = !empty($user['PROFILE_PIC']) ? $user['PROFILE_PIC'] : "default.jp
 
         /* Navbar styling */
         .navbar {
-            background-image: linear-gradient(to right, rgb(238, 194, 74), rgb(66, 40, 95));
+            background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
@@ -53,7 +54,7 @@ $profile_pic = !empty($user['PROFILE_PIC']) ? $user['PROFILE_PIC'] : "default.jp
 
         h2 {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 200px;
             font-size: 30px;
         }
 
@@ -92,11 +93,15 @@ $profile_pic = !empty($user['PROFILE_PIC']) ? $user['PROFILE_PIC'] : "default.jp
             text-decoration: none;
             font-size: 18px;
             border-bottom: 1px solid #ddd;
-            text-align: center; /* Center the links */
+            text-align: left; /* Center the links */
         }
 
         .w3-sidebar a:hover {
             background-color: #ddd;
+        }
+
+        .w3-sidebar a i {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -104,7 +109,7 @@ $profile_pic = !empty($user['PROFILE_PIC']) ? $user['PROFILE_PIC'] : "default.jp
 
     <nav class="navbar">
         <div class="title">Dashboard</div>
-        <a href="logout.php" class="logout-btn">Logout</a>
+        <a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </nav>
 
     <div class="w3-sidebar">
@@ -114,20 +119,19 @@ $profile_pic = !empty($user['PROFILE_PIC']) ? $user['PROFILE_PIC'] : "default.jp
         style="border-radius: 50%;">
 
         <p><?php echo htmlspecialchars($_SESSION['username']); ?></p>
-        <a href="profile.php">Profile</a>
-        <a href="#">Edit</a>
-        <a href="#">View Announcement</a>
-        <a href="#">View Remaining System</a>
-        <a href="#">Lab Rules & Regulations</a>
-        <a href="#">History</a>
-        <a href="#">Reservation</a>
-        <a href="login.php">Logout</a>
+        <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
+        <a href="edit.php"><i class="fas fa-edit"></i> Edit</a>
+        <a href="#"><i class="fas fa-bullhorn"></i> View Announcement</a>
+        <a href="#"><i class="fas fa-tasks"></i> View Remaining System</a>
+        <a href="#"><i class="fas fa-book"></i> Lab Rules & Regulations</a>
+        <a href="#"><i class="fas fa-history"></i> History</a>
+        <a href="#"><i class="fas fa-calendar-alt"></i> Reservation</a>
+        <a href="login.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <!-- Main content -->
     <div style="margin-right: 260px; padding: 20px;">
-        <h2>Welcome to Sit-in Monitoring System</h2>
-        <p>This is your dashboard content...</p>
+       <h2 class="fa-solid fa-graduation-cap" style="text-align: center">Welcome to Sit-in Monitoring System</h2>
     </div>
 
 </body>

@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             // Update session with new image
             $_SESSION['PROFILE_PIC'] = $new_file_name;
-
+            header("Location: dashboard.php"); 
             echo "Profile picture updated successfully!";
         } else {
             echo "Error uploading file.";
@@ -71,16 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Profile</title>
+    <title>Edit Profile</title>
     <style>
-        /* Reset some styles */
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
         }
-
-        /* Navbar styling */
         .navbar {
             background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
             padding: 15px 20px;
@@ -89,7 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             align-items: center;
             color: white;
         }
-
         .navbar .logout-btn {
             color: white;
             padding: 8px 15px;
@@ -98,63 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             border-radius: 5px;
             transition: background 0.3s;
         }
-
         .navbar .logout-btn:hover {
             color: gray;
         }
-
-        h2 {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 30px;
-        }
-
-        /* Sidebar styling */
-        .w3-sidebar {
-            height: 100%;
-            width: 300px;
-            position: fixed;
-            top: 0;
-            right: 0;
-            background-color: #f8f9fa;
-            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-            padding-top: 20px;
-            text-align: center;
-        }
-
-        .w3-sidebar img {
-            width: 100px; /* Profile image size */
-            height: 100px;
-            border-radius: 50%;
-            display: block;
-            margin: 10px auto;
-            border: 3px solid #666;
-        }
-
-        .w3-sidebar p {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .w3-sidebar a {
-            padding: 10px 20px;
-            display: block;
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-            border-bottom: 1px solid #ddd;
-            text-align: left; /* Align the links to the left */
-        }
-
-        .w3-sidebar a:hover {
-            background-color: #ddd;
-        }
-
-        .w3-sidebar a i {
-            margin-right: 10px;
-        }
-
         .container {
             max-width: 600px; /* Reduce the width */
             margin-left: 300px; /* Center the container */
@@ -197,12 +140,51 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         .form-group input[type="submit"]:hover {
             background: #555;
         }
+        .w3-sidebar {
+            height: 100%;
+            width: 300px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #f8f9fa;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            padding-top: 20px;
+            text-align: center;
+        }
+        .w3-sidebar img {
+            width: 100px; /* Profile image size */
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 10px auto;
+            border: 3px solid #666;
+        }
+        .w3-sidebar p {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .w3-sidebar a {
+            padding: 10px 20px;
+            display: block;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            border-bottom: 1px solid #ddd;
+            text-align: LEFT; /* Center the links */
+        }
+        .w3-sidebar a:hover {
+            background-color: #ddd;
+        }
+        .h2 {
+            
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
-    <a href="dashboard.php" style="text-decoration: none;"><div class="title">Dashboard</div>
-        <a href="logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="dashboard.php" style="text-decoration: none;"><div class="title">Dashboard</div>
+        <a href="logout.php" class="logout-btn">Logout</a>
     </nav>
 
     <div class="w3-sidebar">
@@ -219,32 +201,38 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
 
     <div class="container">
-        <h2 style="text-align: center; font-weight: 800;">Profile</h2>
+        <h2 style="text-align: center; font-weight: 800;">Update Profile</h2>
         <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <img src="uploads/<?php echo htmlspecialchars($user['PROFILE_PIC']); ?>" alt="Profile Picture" width="100" height="100" style="border-radius: 50%; margin-bottom: 20px;">
                 <label for="idno">ID Number</label>
                 <input type="text" id="idno" name="idno" value="<?php echo htmlspecialchars($user['IDNO']); ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="lastname">Lastname</label>
-                <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($user['LASTNAME']); ?>" readonly>
+                <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($user['LASTNAME']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="firstname">Firstname</label>
-                <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($user['FIRSTNAME']); ?>" readonly>
+                <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($user['FIRSTNAME']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="midname">Midname</label>
-                <input type="text" id="midname" name="midname" value="<?php echo htmlspecialchars($user['MIDNAME']); ?>" readonly>
+                <input type="text" id="midname" name="midname" value="<?php echo htmlspecialchars($user['MIDNAME']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="course">Course</label>
-                <input type="text" id="course" name="course" value="<?php echo htmlspecialchars($user['COURSE']); ?>" readonly>
+                <input type="text" id="course" name="course" value="<?php echo htmlspecialchars($user['COURSE']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="yearlvl">Year Level</label>
-                <input type="text" id="yearlvl" name="yearlvl" value="<?php echo htmlspecialchars($user['YEARLEVEL']); ?>" readonly>
+                <input type="text" id="yearlvl" name="yearlvl" value="<?php echo htmlspecialchars($user['YEARLEVEL']); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="profile_pic">Profile Picture</label>
+                <input type="file" id="profile_pic" name="profile_pic">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update Profile">
             </div>
         </form>
     </div>
